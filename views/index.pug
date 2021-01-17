@@ -3,9 +3,13 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/index.css")
     title title
   body
-    div(id="main")
-      div(id="wrap")
-        h2 #{datas.title}
-        p #{datas.description}
+    #main
+      #wrap
+        h2.title #{data.title}
+        p.date #{data.date}
+        p.deskripsi #{data.description}
+        p.cr © #{data.copyright}
+        a.next(href='') NEXT

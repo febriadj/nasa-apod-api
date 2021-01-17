@@ -1,8 +1,10 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const path = require('path');
 const app = express();
 
 app.set('view engine', 'pug');
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res, next) => {
   fetch('https://apodapi.herokuapp.com/api/?count=10')
@@ -10,14 +12,14 @@ app.get('/', (req, res, next) => {
     .then(response => {
       response.forEach( datas => {
         res.render('index', {
-          datas: datas
+          data: datas
         })
       })
     })
     .catch(err => {
       console.log(err);
-    })
-})
+    });
+});
 
 app.use((req, res, next) => {
   res.send(`
@@ -32,8 +34,7 @@ app.use((req, res, next) => {
       <p>404 Page Not Found</p>
     <div>
   `)
-  next();
-})
+});
 
 const port = 3000;
 app.listen(port, () => {
