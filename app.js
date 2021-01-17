@@ -12,6 +12,7 @@ app.get('/', (req, res, next) => {
     .then(response => {
       response.forEach( datas => {
         res.render('index', {
+          title: 'Apod API',
           data: datas
         })
       })
