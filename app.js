@@ -10,11 +10,9 @@ app.get('/', (req, res, next) => {
   fetch('https://apodapi.herokuapp.com/api/?count=10')
     .then(response => response.json())
     .then(response => {
-      response.forEach( datas => {
-        res.render('index', {
-          title: 'Apod API',
-          data: datas
-        })
+      res.render('index', {
+        title: 'Apod API',
+        datas: response
       })
     })
     .catch(err => {

@@ -8,8 +8,11 @@ html(lang="en")
   body
     #main
       #wrap
-        h2.title #{data.title}
-        p.date #{data.date}
-        p.deskripsi #{data.description}
-        p.cr © #{data.copyright}
-        a.next(href='') NEXT
+        - datas.forEach( data => {
+          .card
+            img(src=data.url, alt="")
+            h2.title #{data.title}
+            p.date #{data.date}
+            p.deskripsi #{data.description}
+            p.cr © #{data.copyright}
+        - })
